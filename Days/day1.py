@@ -1,0 +1,1 @@
+print(sum([int(line.strip()) // 3 - 2 for line in open("../inputs/input_day1.txt")]))

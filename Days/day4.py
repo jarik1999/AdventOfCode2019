@@ -1,0 +1,1 @@
+print(sum([sorted(str(i)) == list(str(i)) and any([str(i)[j] == str(i)[j+1] for j in range(len(str(i)) - 1)]) for i in range(109165, 576724)]))
