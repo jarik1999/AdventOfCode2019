@@ -77,7 +77,17 @@ directions = [(0, 1), (-1, 0), (0, -1), (1, 0)]
 
 def drawGrid(grid):
 	for row in grid:
-		print(row)
+		print("".join(row))
+
+def drawColorGrid(grid, include, FILL = "X", EMPTY = " "):
+	for row in grid:
+		result = ""
+		for value in row:
+			if value in include:
+				result += FILL
+			else:
+				result += EMPTY
+		print(result)
 
 def createGrid(line, width):
 	if len(line) % width != 0: raise Exception("invalid rectangle grid")
@@ -92,3 +102,19 @@ def drawLine(line, width):
 	while i < len(line):
 		print(line[i:i+width])
 		i += width
+
+def replaceGrid(grid, replace, value):
+	for row in grid:
+		for i in range(len(row)):
+			if row[i] in replace:
+				row[i] = value
+	return grid
+
+# Can use numpy, but it requires values to stay numeric
+def zeroArray(width, height):
+	return [[0 for i in range(width)] for j in range(height)]
+
+def transformGrid(grid, verticalFlip = False, horizontalFlip = False):
+	if verticalFlip: grid = [row[::-1] for row in grid]
+	if horizontalFlip: grid = grid[::-1]
+	return grid
