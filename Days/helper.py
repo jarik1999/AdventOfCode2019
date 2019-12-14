@@ -5,8 +5,6 @@ import numpy as np
 # Possible extensions
 # day07 	runs series of programs once
 # day07_2 	runs series of programs multiple times
-# day08		creates a grid from a 1-dimensional array
-# day08_2	draws a grid from a 1-dimensional array
 
 
 # IntCode program
@@ -72,9 +70,10 @@ def compare(a, b):
 def gcd(a, b): return a if b == 0 else gcd(b, a % b)
 def lcm(a, b): return a * b / gcd(a, b)
 
-# Useful
+# Useful variables
 directions = [(0, 1), (-1, 0), (0, -1), (1, 0)]
 
+# Drawing
 def drawGrid(grid):
 	for row in grid:
 		print("".join(row))
@@ -89,19 +88,20 @@ def drawColorGrid(grid, include, FILL = "X", EMPTY = " "):
 				result += EMPTY
 		print(result)
 
-def createGrid(line, width):
-	if len(line) % width != 0: raise Exception("invalid rectangle grid")
-	grid = []
-	for i in range(len(line) // width):
-		grid.append(line[i*width:(i+1)*width])
-	return grid
-
 def drawLine(line, width):
 	if len(line) % width != 0: raise Exception("invalid rectangle grid")
 	i = 0
 	while i < len(line):
 		print(line[i:i+width])
 		i += width
+
+# Grid transformations		
+def createGrid(line, width):
+	if len(line) % width != 0: raise Exception("invalid rectangle grid")
+	grid = []
+	for i in range(len(line) // width):
+		grid.append(line[i*width:(i+1)*width])
+	return grid
 
 def replaceGrid(grid, replace, value):
 	for row in grid:
@@ -110,11 +110,12 @@ def replaceGrid(grid, replace, value):
 				row[i] = value
 	return grid
 
-# Can use numpy, but it requires values to stay numeric
-def zeroArray(width, height):
-	return [[0 for i in range(width)] for j in range(height)]
-
 def transformGrid(grid, verticalFlip = False, horizontalFlip = False):
 	if verticalFlip: grid = [row[::-1] for row in grid]
 	if horizontalFlip: grid = grid[::-1]
 	return grid
+
+# Similar to zeros from numpy, but can contain any type
+def zeroArray(width, height):
+	return [[0 for i in range(width)] for j in range(height)]
+
