@@ -2,6 +2,13 @@ import math, re
 from itertools import *
 import numpy as np
 
+# Possible extensions
+# day07 	runs series of programs once
+# day07_2 	runs series of programs multiple times
+# day08		creates a grid from a 1-dimensional array
+# day08_2	draws a grid from a 1-dimensional array
+
+
 # IntCode program
 class Program:
 	operationSize = [-1, 4, 4, 2, 2, 3, 3, 4, 4, 2]
@@ -64,3 +71,24 @@ def compare(a, b):
 # Math
 def gcd(a, b): return a if b == 0 else gcd(b, a % b)
 def lcm(a, b): return a * b / gcd(a, b)
+
+# Useful
+directions = [(0, 1), (-1, 0), (0, -1), (1, 0)]
+
+def drawGrid(grid):
+	for row in grid:
+		print(row)
+
+def createGrid(line, width):
+	if len(line) % width != 0: raise Exception("invalid rectangle grid")
+	grid = []
+	for i in range(len(line) // width):
+		grid.append(line[i*width:(i+1)*width])
+	return grid
+
+def drawLine(line, width):
+	if len(line) % width != 0: raise Exception("invalid rectangle grid")
+	i = 0
+	while i < len(line):
+		print(line[i:i+width])
+		i += width
