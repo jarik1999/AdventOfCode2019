@@ -1,3 +1,7 @@
+import math, re
+from itertools import *
+import numpy as np
+
 # IntCode program
 class Program:
 	operationSize = [-1, 4, 4, 2, 2, 3, 3, 4, 4, 2]

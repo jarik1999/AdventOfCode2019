@@ -1,5 +1,4 @@
 from helper import *
-import numpy as np
 
 with open("../Inputs/input_day13.txt") as f:
 	program = list(map(int, f.readline().split(","))) + [0] * 10000

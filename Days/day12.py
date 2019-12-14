@@ -1,5 +1,4 @@
 from helper import *
-from itertools import permutations
 
 positions = [[10, 15, 7], [15, 10, 0], [20, 12, 3], [0, -3, 13]]
 velocities = [[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]]

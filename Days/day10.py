@@ -1,4 +1,4 @@
-import math
+from helper import *
 
 width, height = -1, -1
 def getAngle(a, b, c):

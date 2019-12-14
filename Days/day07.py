@@ -1,5 +1,4 @@
 from helper import *
-from itertools import permutations
 
 def runPrograms(programs, settings):
 	output = 0
