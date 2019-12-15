@@ -78,6 +78,12 @@ def drawGrid(grid):
 	for row in grid:
 		print("".join(row))
 
+def drawGrid2(grid, mapping):
+	for row in grid:
+		res = ""
+		for value in row: res += mapping[value]
+		print(res)
+
 def drawColorGrid(grid, include, FILL = "X", EMPTY = " "):
 	for row in grid:
 		result = ""
@@ -95,7 +101,16 @@ def drawLine(line, width):
 		print(line[i:i+width])
 		i += width
 
+
 # Grid transformations		
+def pointsToGrid(points):
+	xValues, yValues = [x for x, _ in points], [y for _, y in points]
+	minX, maxX, minY, maxY = min(xValues), max(xValues), min(yValues), max(yValues)
+	width, height = maxX - minX + 1, maxY - minY + 1
+	grid = np.zeros((height, width))
+	for x, y in points: grid[y - minY, x - minX] = 1
+	return grid
+
 def createGrid(line, width):
 	if len(line) % width != 0: raise Exception("invalid rectangle grid")
 	grid = []
